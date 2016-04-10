@@ -135,18 +135,29 @@
 
 
 
-### fastgreedy community
+### eigenvector community
 
   1. רשת לפי קוד צבעים התואם את הקהילות
   
-   ![alt tag](/ga_plot_fastgreedy.png)
-  2. התקבלו 3 קהילות
+   ![alt tag](/lemis_plot_eigenvector.png)
+  2. התקבלו 8 קהילות
   
-    קהילה 1- 24 קודקודים
+    קהילה 1- 8 קודקודים
 
-    קהילה 2- 5 קודקודים
+    קהילה 2- 19 קודקודים
+    
+    קהילה 3- 20 קודקודים
 
-    קהילה 3- 3 קודקודים
-  3. modularity max-0.3044983
+    קהילה 4- 11 קודקודים
+    
+    קהילה 5- 6 קודקודים
+    
+    קהילה 6- 1 קודקודים
+    
+    קהילה 7- 1 קודקודים
+    
+    קהילה 8- 11 קודקודים
+    
+  3. modularity max-0.5322711
   
-    ![alt tag](/ga_mod_fastgreedy.png)
+    ![alt tag](/lemis_mod_eigenvector.png)
