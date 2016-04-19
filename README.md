@@ -145,7 +145,7 @@ V(e)[maxEv]$label
 
 ### Grivan-Newman algorithm
   1. רשת לפי קוד צבעים התואם את הקהילות
-  ```sh
+  ```
   set.seed(100)
   ebc <- edge.betweenness.community(g, directed=F,weights = E(g)$weight)
   V(g)$color<-ebc$membership
@@ -154,9 +154,10 @@ V(e)[maxEv]$label
   plot(g)
   dev.off()
   ```
+  
    ![alt tag](/lemis_plot_Grivan-Newman.png)
   2. התקבלו 11 קהילות
-  ```sh
+  ```
   i=max(ebc$membership)
   x=1
   while (x<=i)
@@ -188,7 +189,7 @@ V(e)[maxEv]$label
     
     קהילה 11- 2 קודקודים
   3. modularity 0.54
-  ```sh
+  ```
   ebc
   ```
 
@@ -197,7 +198,7 @@ V(e)[maxEv]$label
 ### eigenvector community
 
   1. רשת לפי קוד צבעים התואם את הקהילות
-  ```sh
+  ```
   lec<-leading.eigenvector.community(g)
   lec$membership
   V(g)$color=lec$membership
@@ -206,9 +207,10 @@ V(e)[maxEv]$label
   plot(g)
   dev.off()
   ```
+  
    ![alt tag](/lemis_plot_eigenvector.png)
   2. התקבלו 8 קהילות
-  ```sh
+  ```
   i=max(lec$membership)
   x=1
   while (x<=i)
@@ -235,6 +237,6 @@ V(e)[maxEv]$label
     קהילה 8- 11 קודקודים
     
   3. modularity max-0.53
-  ```sh
+  ```
   lec
   ```
