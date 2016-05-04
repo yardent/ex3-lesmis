@@ -1,4 +1,3 @@
-setwd("~/information system/fourth year/second semester/application methods for data analysis/scond ass")
 install.packages('igraph')
 library(igraph)
 fa.data <- read.graph('lesmis.gml',format = 'gml')
@@ -49,21 +48,7 @@ set.seed(100)
 # Grivan-Newman algorithm
 # 1st we calculate the edge betweenness, merges, etc...
 ebc <- edge.betweenness.community(g, directed=F,weights = E(g)$weight)
-mods <- sapply(0:ecount(g), function(i){
-  g2 <- delete.edges(g, ebc$removed.edges[seq(length=i)])
-  cl <- clusters(g2)$membership
-  modularity(g,cl)
-})
-
-# we can now plot all modularities
-png(filename="lemis_mod_Grivan-Newman.png")
-plot(mods, pch=20)
-dev.off()
-max(mods)
-
-# Now, let's color the nodes according to their membership
-g2<-delete.edges(g, ebc$removed.edges[seq(length=which.max(mods)-1)])
-V(g)$color=clusters(g2)$membership
+V(g)$color<-ebc$membership
 
 # Let's choose a layout for the graph
 g$layout <- layout.fruchterman.reingold
@@ -74,36 +59,21 @@ plot(g)
 dev.off()
 
 #amount of communities
-i=max(clusters(g2)$membership)
+i=max(ebc$membership)
 x=1
 while (x<=i)
 {
-  t<-table(clusters(g2)$membership)[x]
+  t<-table(ebc$membership)[x]
   print(t)
   x=x+1
 }
 
 #eigenvector community
-leading.eigenvector.community(g)
-
+lec<-leading.eigenvector.community(g)
+lec
 lec$membership
-
-mods1 <- sapply(0:ecount(g), function(i){
-  cl <- lec$membership
-  modularity(g,cl)
-})
-max(mods1)
-
-png(filename="lemis_mod_eigenvector.png")
-plot(mods1)
-dev.off()
-
 V(g)$color=lec$membership
-
-# Let's choose a layout for the graph
 g$layout <- layout.fruchterman.reingold
-
-# plot it
 png(filename="lemis_plot_eigenvector.png")
 plot(g)
 dev.off()
